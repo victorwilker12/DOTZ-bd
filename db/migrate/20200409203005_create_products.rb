@@ -4,7 +4,7 @@ class CreateProducts < ActiveRecord::Migration[5.2]
       t.string :nome
       t.bigint :valor_dotz, :limit => 10000
       t.string :imagem
-      t.integer :estoque
+      t.integer :estoque, :minimum => 1
 
       t.timestamps
     end

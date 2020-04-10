@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nome:</strong>
+  <%= @client.nome %>
+</p>
+
+<p>
+  <strong>CPF:</strong>
+  <%= @client.cpf %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @client.email %>
+</p>
+
+<p>
+  <strong>Saldo dotz:</strong>
+  <%= @client.saldo_dotz %>
+</p>
+
+<%= link_to 'Edit', edit_client_path(current_client) %> |
+<%= link_to 'Back', products_path %>

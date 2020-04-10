@@ -30,6 +30,7 @@ class PurchasesController < ApplicationController
     @purchase.client_id = current_client.id
     @purchase.product_id = @product.id
     @purchase.valor_da_compra = @purchase.quantidade*@product.valor_dotz
+    @product.update(estoque: @product.estoque - @purchase.quantidade)
 
     respond_to do |format|
       if @purchase.save
@@ -76,7 +77,6 @@ class PurchasesController < ApplicationController
       @product = Product.find(params[:product_id])
     end
     
-
     # Only allow a list of trusted parameters through.
     def purchase_params
       params.require(:purchase).permit(:valor_da_compra, :quantidade)

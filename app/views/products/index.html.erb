@@ -25,7 +25,9 @@
           <td><%= link_to 'Editar', edit_product_path(product) %></td>
           <td><%= link_to 'Deletar', product, method: :delete, data: { confirm: 'Tem certeza disso?' } %></td>
         <% end %>
-        <td><%= link_to 'Comprar Produto', new_product_purchase_path(product) %></td>
+        <% if client_signed_in? %>
+          <td><%= link_to 'Comprar Produto', new_product_purchase_path(product) %></td>
+        <% end %>
         
       </tr>
     <% end %>
@@ -33,6 +35,7 @@
 </table>
 
 <br>
-
-<%= link_to 'Adicionar Produto', new_product_path %> |
+<% if admin_signed_in? %>
+  <%= link_to 'Adicionar Produto', new_product_path %> |
+<% end %>
 <%= link_to "Página Principal", root_path %>
