@@ -1,5 +1,7 @@
 class PurchasesController < ApplicationController
+  before_action :authenticate_client!, only: [:create]
   before_action :set_purchase, only: [:show, :edit, :update, :destroy]
+  before_action :set_product, only: [:new, :create]
 
   # GET /purchases
   # GET /purchases.json
@@ -25,10 +27,13 @@ class PurchasesController < ApplicationController
   # POST /purchases.json
   def create
     @purchase = Purchase.new(purchase_params)
+    @purchase.client_id = current_client.id
+    @purchase.product_id = @product.id
+    @purchase.valor_da_compra = @purchase.quantidade*@product.valor_dotz
 
     respond_to do |format|
       if @purchase.save
-        format.html { redirect_to @purchase, notice: 'Purchase was successfully created.' }
+        format.html { redirect_to products_path, notice: 'Compra realizada com sucesso!!' }
         format.json { render :show, status: :created, location: @purchase }
       else
         format.html { render :new }
@@ -67,8 +72,13 @@ class PurchasesController < ApplicationController
       @purchase = Purchase.find(params[:id])
     end
 
+    def set_product
+      @product = Product.find(params[:product_id])
+    end
+    
+
     # Only allow a list of trusted parameters through.
     def purchase_params
-      params.require(:purchase).permit(:client_id, :product_id, :valor_do_produto, :quantidade)
+      params.require(:purchase).permit(:valor_da_compra, :quantidade)
     end
 end

@@ -10,7 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_09_211357) do
+ActiveRecord::Schema.define(version: 2020_04_09_234411) do
+
+  create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
 
   create_table "admins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -20,7 +41,13 @@ ActiveRecord::Schema.define(version: 2020_04_09_211357) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "nome"
+    t.integer "compensador_dotz"
+    t.bigint "client_id"
+    t.bigint "product_id"
+    t.index ["client_id"], name: "index_admins_on_client_id"
     t.index ["email"], name: "index_admins_on_email", unique: true
+    t.index ["product_id"], name: "index_admins_on_product_id"
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
@@ -30,19 +57,20 @@ ActiveRecord::Schema.define(version: 2020_04_09_211357) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "cpf"
-    t.integer "saldo_dotz"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "nome"
+    t.string "cpf"
+    t.integer "saldo_dotz"
     t.index ["email"], name: "index_clients_on_email", unique: true
     t.index ["reset_password_token"], name: "index_clients_on_reset_password_token", unique: true
   end
 
   create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "nome"
-    t.string "valor_dotz"
+    t.bigint "valor_dotz"
     t.string "imagem"
-    t.string "estoque"
+    t.integer "estoque"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -50,14 +78,18 @@ ActiveRecord::Schema.define(version: 2020_04_09_211357) do
   create_table "purchases", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "client_id"
     t.bigint "product_id"
-    t.integer "valor_do_produto"
+    t.integer "valor_da_compra"
     t.integer "quantidade"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "valor_total"
     t.index ["client_id"], name: "index_purchases_on_client_id"
     t.index ["product_id"], name: "index_purchases_on_product_id"
   end
 
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "admins", "clients"
+  add_foreign_key "admins", "products"
   add_foreign_key "purchases", "clients"
   add_foreign_key "purchases", "products"
 end

@@ -27,7 +27,10 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'devise'
-# Use ActiveStorage variant
+
+gem 'faker', '~> 2.11.0'
+
+# Use ActiveStorage variant5
 # gem 'mini_magick', '~> 4.8'
 
 # Use Capistrano for deployment
