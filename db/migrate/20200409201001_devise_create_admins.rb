@@ -32,9 +32,6 @@ class DeviseCreateAdmins < ActiveRecord::Migration[5.2]
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
 
-      t.compensador_dotz :integer
-      t.references :client, foreign_key: true
-      t.references :product, foreign_key: true
       t.timestamps null: false
     end
 

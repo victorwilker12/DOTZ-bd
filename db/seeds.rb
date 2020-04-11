@@ -6,10 +6,22 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-unless Admin.find_by(email: "admin@example.com")
+if !(Admin.find_by(email: "admin@example.com"))
+    p "Criando Admin padrão"
     Admin.create!(email:"admin@example.com", password:"adminpassword", password_confirmation:"adminpassword")
 end
 
 unless Client.find_by(email:"client@example.com")
+    p "Criando Client padrão"
     Client.create!(email:"client@example.com", password:"clientpassword", password_confirmation:"clientpassword")
 end
+
+p "Cadastrando 10 produtos..."
+10.times do |simulator|
+    Product.create!(
+        nome: Faker::Commerce.product_name,
+        valor_dotz: Faker::Number.between(from: 200, to: 2500),
+        estoque: Faker::Number.between(from: 10, to: 50)
+    )
+end
+p "Produtos cadastrados!"

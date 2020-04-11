@@ -4,11 +4,17 @@
     <%= link_to "Sair do Admin", destroy_client_session_path, method: :delete, data: { confirm: "Tem certeza que quer sair? "} %>
 <% elsif client_signed_in? %>
     <h1>Dashboard Client</h1>
-    <%= link_to "Sair da Dashboard", destroy_admin_session_path, method: :delete, data: { confirm: "Tem certeza que quer sair? "} %>
+    <%= link_to "Sair da Dashboard", destroy_admin_session_path, method: :delete, data: { confirm: "Tem certeza que quer sair? "} %>|
+    <%= link_to "Meu Perfil", edit_client_path(current_client), method: :patch %>
 <% end %>
 
 <p>Bem Vindo a Nossa Loja Dotz!!</p>
 
-<%= link_to "Sou Admin", new_admin_session_path %> | 
-<%= link_to "Sou Client", new_client_session_path %>
+<% unless admin_signed_in? || client_signed_in? %>
+    <%= link_to "Sou Admin", new_admin_session_path %> | 
+    <%= link_to "Sou Client", new_client_session_path %>
+<br><br>
+<% end %>
+
+<%= link_to "Ver produtos da Loja", products_path %>
 
