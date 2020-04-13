@@ -57,5 +57,5 @@ test:
 production:
   <<: *default
   database: dbdotz_production
-  username: dbdotz
+  username: <%= ENV['DBDOTZ_DATABASE_USER'] %>
   password: <%= ENV['DBDOTZ_DATABASE_PASSWORD'] %>
