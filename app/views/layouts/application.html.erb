@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Dbdotz</title>
+    <title>Loja Dotz</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -14,6 +14,24 @@
   </head>
 
   <body>
+  <%= nav_bar fixed: :top, brand: "Loja Dotz" do %>
+    <%= menu_group do %>
+        <%= menu_item "Home", root_path %>
+        <%= menu_item 'Produtos', products_path %>
+        <% if admin_signed_in? %>
+          <%= menu_item "Novo Produto", new_product_path %>
+        <% end %>
+        <% unless admin_signed_in? || client_signed_in? %>
+          <%= menu_item "Sou Admin", new_admin_session_path %>
+          <%= menu_item "Sou Client", new_client_session_path %>
+        <% else %>
+          <%= menu_item "Meu Perfil", edit_client_registration_path %>
+          <%= menu_item "Minhas compras", minhas_compras_path %>
+        <% end %>
+        <%= menu_item "Sair", destroy_admin_session_path, method: :delete, data: { confirm: "Tem certeza que quer sair? "} %>
+    <% end %>
+<% end %>
+
     <%= yield %>
   </body>
 </html>
