@@ -1,4 +1,11 @@
-
+<div class="container">
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+    
+    </div>
+    <div class="col-sm text-center">
+     
 <% if admin_signed_in? %>
     <h1>Dashboard Admin</h1>
     <%= link_to "Sair do Admin", destroy_client_session_path, method: :delete, data: { confirm: "Tem certeza que quer sair? "} %>
@@ -8,13 +15,33 @@
     <%= link_to "Meu Perfil", edit_client_path(current_client), method: :patch %>
 <% end %>
 
-<p>Bem Vindo a Nossa Loja Dotz!!</p>
+<div class="card">
+  <div class="card-header">
+    <h1>Bem Vindo a Nossa Loja Dotz!!</h1>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">
+
 
 <% unless admin_signed_in? || client_signed_in? %>
     <%= link_to "Sou Admin", new_admin_session_path %> | 
-    <%= link_to "Sou Client", new_client_session_path %>
+    <%= link_to "Sou Cliente", new_client_session_path %>
 <br><br>
 <% end %>
+</h5>
+  
+<%= link_to "Ver produtos da Loja",products_path,class:"btn btn-primary" %>
 
-<%= link_to "Ver produtos da Loja", products_path %>
+  </div>
+</div>
+    </div>
+   
 
+    <div class="col-sm">
+     
+    </div>
+  </div>
+</div>
+
+
+</div>
