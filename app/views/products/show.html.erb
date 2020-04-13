@@ -12,7 +12,7 @@
 
 <p>
   <strong>Imagem:</strong>
-  <%= image_tag @product.image, style:"width:50px;" if product.image.attached?%>
+  <%= image_tag @product.image, style:"width:50px;" if @product.image.attached?%>
 </p>
 
 <p>

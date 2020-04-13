@@ -1,5 +1,40 @@
 <h1>Nova Compra</h1>
 
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width:180px;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.container {
+  padding: 2px 16px;
+}
+</style>
+</head>
+<body>
+
+<div class="card">
+  <img src="https://http2.mlstatic.com/sapato-esportivo-casual-masculino-de-amarrar-com-biqueira-D_NQ_NP_726824-MLB31117452610_062019-F.webp%202x" alt="Sapato" style="width:100px;">
+  <%= image_tag @produtct.image if @product.image.attached? %>
+  <div class="container">
+    <h4><b> <%= @product.nome %> </b></h4> 
+    <h4><b> <%= @product.valor_dotz %> dotz</b></h4>
+    
+  </div>
+</div>
+
+</body>
+</html> 
+
 <%= render 'form', purchase: @purchase %>
 
 <%= link_to 'Voltar', products_path %>

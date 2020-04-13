@@ -1,0 +1,42 @@
+<table>
+  <thead>
+    <tr>
+      <th>Total de produtos comprados</th>
+      <th>Dotz usados</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+      <tr>
+        <td><%= @purchases.count %></td>
+        <td><%= @purchases.sum(:valor_da_compra) %></td>
+      </tr>
+  </tbody>
+</table>
+
+<hr>
+<table>
+  <thead>
+    <tr>
+      <th>Produto</th>
+      <th>Valor da compra</th>
+      <th>Quantidade</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @purchases.each do |purchase| %>
+      <tr>
+        <td><%= purchase.product.nome %></td>
+        <td><%= purchase.valor_da_compra %> dotz</td>
+        <td><%= purchase.quantidade %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to "Página Principal", root_path %> |
+<%= link_to "Tabela de produtos", products_path %> |
+<%= link_to "Meu Perfil", edit_client_registration_path %>

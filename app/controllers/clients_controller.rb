@@ -12,12 +12,12 @@ class ClientsController < ApplicationController
   # PATCH/PUT /products/1.json
   def update
     respond_to do |format|
-      if current_client.update(client_params)
-        format.html { redirect_to current_client, notice: 'Perfil atualizado com sucesso.' }
-        format.json { render :show, status: :ok, location: current_client }
+      if @client.update(client_params)
+        format.html { redirect_to root_path, notice: 'Perfil atualizado com sucesso.' }
+        format.json { render :show, status: :ok, location: @client }
       else
         format.html { render :edit }
-        format.json { render json: current_client.errors, status: :unprocessable_entity }
+        format.json { render json: @client.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -25,7 +25,7 @@ class ClientsController < ApplicationController
   private
 
     def set_client
-      @client = Client.find_by(id: current_client.id)
+      @client = Client.find(params[:id])
     end
     
     def client_params

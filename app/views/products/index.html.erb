@@ -25,9 +25,7 @@
           <td><%= link_to 'Editar', edit_product_path(product) %></td>
           <td><%= link_to 'Deletar', product, method: :delete, data: { confirm: 'Tem certeza disso?' } %></td>
         <% end %>
-        <% if client_signed_in? %>
-          <td><%= link_to 'Comprar Produto', new_product_purchase_path(product) %></td>
-        <% end %>
+        <td><%= link_to 'Comprar Produto', new_product_purchase_path(product) %></td>
         
       </tr>
     <% end %>
