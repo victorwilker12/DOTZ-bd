@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Clientes cadastrados</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>email</th>
+      <th>saldo dotz</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @clients.each do |purchase| %>
+      <tr>
+        <td><%= client.nome %></td>
+        <td><%= client.email %></td>
+        <td><%= client.saldo_dotz %></td>
+        <td><%#= link_to 'Edit', edit_product_purchase_path(purchase) %></td>
+        <td><%#= link_to 'Destroy', purchase, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Voltar', products_path %> |

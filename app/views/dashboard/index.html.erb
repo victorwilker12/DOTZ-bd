@@ -1,9 +1,10 @@
 
 <% if admin_signed_in? %>
     <h1>Dashboard Admin</h1>
-    <%= link_to "Sair do Admin", destroy_client_session_path, method: :delete, data: { confirm: "Tem certeza que quer sair? "} %>
 <% elsif client_signed_in? %>
     <h1>Dashboard Client</h1>
+<% else %>
+    <h1>Logue para efetuar uma compra!</h1>
 <% end %>
 
 

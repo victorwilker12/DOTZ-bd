@@ -25,3 +25,5 @@ p "Cadastrando 10 produtos..."
     )
 end
 p "Produtos cadastrados!"
+
+Client.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?

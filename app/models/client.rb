@@ -5,5 +5,4 @@ class Client < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :purchases
-  belongs_to :admin, optional: true
 end
