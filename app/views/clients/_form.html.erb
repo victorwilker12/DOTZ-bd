@@ -1,10 +1,10 @@
-<%= form_with(model: client, local: true) do |form| %>
-  <% if client.errors.any? %>
+<%= form_with(model: @client, url: client_add_dotz_path, method: :patch, local: true) do |form| %>
+  <% if @client.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(client.errors.count, "error") %> prohibited this client from being saved:</h2>
+      <h2><%= pluralize(@client.errors.count, "error") %> prohibited this client from being saved:</h2>
 
       <ul>
-      <% client.errors.full_messages.each do |message| %>
+      <% @client.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -26,7 +26,13 @@
     <%= form.text_field :cpf %>
   </div>
 
+  <div class="field">
+    <%= form.label :saldo_dotz %>
+    <%= form.number_field :saldo_dotz %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
+
 <% end %>

@@ -13,8 +13,25 @@ end
 
 unless Client.find_by(email:"client@example.com")
     p "Criando Client padrão"
-    Client.create!(email:"client@example.com", password:"clientpassword", password_confirmation:"clientpassword")
+    Client.create!(nome:"Sou um teste", email:"client@example.com", password:"clientpassword", password_confirmation:"clientpassword")
 end
+
+password = Faker::Internet.password(min_length: 10, max_length: 20, mix_case: true)
+10.times do |clients|
+    Client.create!(
+        nome: Faker::Name.name,
+        email: Faker::Internet.email,
+        cpf: "000.000.000-00",
+        password: password,
+        password_confirmation: password
+    )
+
+    Dotz.create!(
+        client_id: clients + 1,
+        moeda: 0
+    )
+end
+
 
 p "Cadastrando 10 produtos..."
 10.times do |simulator|

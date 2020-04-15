@@ -34,6 +34,9 @@
             <%= link_to  products_path do %>
             <i class="nc-icon nc-bank"></i>
               <p>Loja</p>
+              <% if admin_signed_in? %>
+                <%= link_to "Clientes Cadastrados", clients_path %>
+              <% end %>
             <%end%>
             
           </li>

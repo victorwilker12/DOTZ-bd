@@ -1,6 +1,10 @@
 
 class ClientsController < ApplicationController
-  before_action :set_client, only: [:show, :edit, :update]
+  before_action :set_client, only: [:show, :edit, :update, :destroy]
+
+  def index
+    @clients = Client.all
+  end
 
   def show
   end
@@ -10,16 +14,34 @@ class ClientsController < ApplicationController
 
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
+  # def update
+  #   respond_to do |format|
+  #     if @client.update(client_params)
+  #       format.html { redirect_to clients_path, notice: 'Perfil atualizado com sucesso.' }
+  #     else
+  #       format.html { render :edit }
+  #       format.json { render json: @client.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
+
   def update
+    p "AAAAAAAAAAAAAAAAAAAAAAAAAA#{@client.dotz.moeda}"
+    p "AAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    # @client.saldo_dotz += @client.dotz.moeda
     respond_to do |format|
       if @client.update(client_params)
-        format.html { redirect_to root_path, notice: 'Perfil atualizado com sucesso.' }
-        format.json { render :show, status: :ok, location: @client }
+        format.html { redirect_to clients_path, notice: 'Perfil atualizado com sucesso.' }
+        # format.json { render :show, status: :ok, location: @client }
       else
         format.html { render :edit }
         format.json { render json: @client.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def destroy
+    @client.destroy
   end
 
   private
@@ -29,7 +51,7 @@ class ClientsController < ApplicationController
     end
     
     def client_params
-      params.require(:client).permit(:email, :nome, :cpf)
+      params.permit(:nome, :email, :cpf, :saldo_dotz, dotz_attributes: [:moeda])
     end
 end
   

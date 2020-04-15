@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_09_234411) do
+ActiveRecord::Schema.define(version: 2020_04_15_194019) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -66,6 +66,14 @@ ActiveRecord::Schema.define(version: 2020_04_09_234411) do
     t.index ["reset_password_token"], name: "index_clients_on_reset_password_token", unique: true
   end
 
+  create_table "dotzs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "moeda", default: 0
+    t.bigint "client_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_dotzs_on_client_id"
+  end
+
   create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "nome"
     t.bigint "valor_dotz"
@@ -90,6 +98,7 @@ ActiveRecord::Schema.define(version: 2020_04_09_234411) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "admins", "clients"
   add_foreign_key "admins", "products"
+  add_foreign_key "dotzs", "clients"
   add_foreign_key "purchases", "clients"
   add_foreign_key "purchases", "products"
 end
