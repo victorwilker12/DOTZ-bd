@@ -12,5 +12,16 @@
 //
 //= require rails-ujs
 //= require activestorage
+
+//=require dash/core/jquery.min
+//=require dash/core/popper.min
+//=require dash/core/bootstrap.min
+//=require dash/plugins/perfect-scrollbar.jquery.min
+//=require dash/plugins/chartjs.min
+//=require dash/plugins/bootstrap-notify
+//=require dash/paper-dashboard.min
 //= require turbolinks
 //= require_tree .
+
+
+

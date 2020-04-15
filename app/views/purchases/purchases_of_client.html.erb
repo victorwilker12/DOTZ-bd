@@ -1,0 +1,169 @@
+<div class="sidebar" data-color="white" data-active-color="danger">
+
+      <div class="sidebar-wrapper">
+        <ul class="nav">
+          <li>
+            <%= link_to  root_path do %>
+              <i class="nc-icon nc-bank"></i>
+              <p>Pagina Inicial</p>
+            <%end%>
+          </li>
+          <li>
+             <%= link_to  edit_client_registration_path do %> 
+              <i class="nc-icon nc-single-02"></i>
+              <p>Meu Perfil</p>
+              <%end%>
+            </a>
+          </li>
+        
+         
+          <li>
+             <%= link_to  products_path do %>
+              <i class="nc-icon nc-tile-56"></i>
+              <p>Tabela de produtos</p>
+              <%end%>
+            </a>
+          </li>
+       
+        </ul>
+      </div>
+    </div>
+
+     
+
+
+
+<div class="main-panel">
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
+        <div class="container-fluid">
+          <div class="navbar-wrapper">
+            <div class="navbar-toggle">
+              <button type="button" class="navbar-toggler">
+                <span class="navbar-toggler-bar bar1"></span>
+                <span class="navbar-toggler-bar bar2"></span>
+                <span class="navbar-toggler-bar bar3"></span>
+              </button>
+            </div>
+            <a class="navbar-brand" href="javascript:;">Minhas Compras</a>
+          </div>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+          </button>
+        
+        </div>
+      </nav>
+
+
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+      <tr>
+        <td></td>
+        <td></td>
+      </tr>
+  </tbody>
+</table>
+
+<div class="content">
+        
+        <div class="row">
+
+
+          <div class="col-lg-6 col-md-6 col-sm-6">
+            <div class="card card-stats">
+              <div class="card-body ">
+                <div class="row">
+                  <div class="col-5 col-md-4">
+                    <div class="icon-big text-center icon-warning">
+                      <i class="nc-icon nc-globe text-warning"></i>
+                    </div>
+                  </div>
+                  <div class="col-7 col-md-8">
+                    <div class="numbers">
+                      <p class="card-category">Total de produtos comprados</p>
+                      <p class="card-title"><%= @purchases.count %></p><p>
+                    </p></div>
+                  </div>
+                </div>
+              </div>
+             
+            </div>
+          </div>
+
+
+          <div class="col-lg-6 col-md-6 col-sm-6">
+            <div class="card card-stats">
+              <div class="card-body ">
+                <div class="row">
+                  <div class="col-5 col-md-4">
+                    <div class="icon-big text-center icon-warning">
+                      <i class="nc-icon nc-money-coins text-success"></i>
+                    </div>
+                  </div>
+                  <div class="col-7 col-md-8">
+                    <div class="numbers">
+                      <p class="card-category">Dotz usados</p>
+                      <p class="card-title"><%= @purchases.sum(:valor_da_compra) %></p><p>
+                    </p></div>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        
+   
+        </div>
+        
+        
+        
+        
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header">
+                <h4 class="card-title"> Lista de compras</h4>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead class=" text-primary">
+                     <th>Produto</th>
+      <th>Valor da compra</th>
+      <th>Quantidade</th>
+      <th colspan="3"></th>
+      </thead>
+                    <tbody>
+                      <% @purchases.each do |purchase| %>
+      <tr>
+        <td><%= purchase.product.nome %></td>
+        <td><%= purchase.valor_da_compra %> dotz</td>
+        <td><%= purchase.quantidade %></td>
+      </tr>
+    <% end %>
+                   
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+       
+        </div>
+      </div>
+
+
+
+      </div>
+      

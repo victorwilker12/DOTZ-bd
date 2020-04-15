@@ -38,13 +38,13 @@
   </tbody>
 </table> -->
 
-<br><br>
+
   <div class="field">
     <%= form.label :quantidade %>
-    <%= form.number_field :quantidade %>
+    <%= form.number_field :quantidade,class:'form-control',min:'1' %>
   </div>
-
+<br>
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Comprar',class:'btn btn-primary btn-round' %>
   </div>
 <% end %>

@@ -4,14 +4,12 @@ Rails.application.routes.draw do
   end
   
   devise_for :admins
-  devise_for :clients
+  devise_for :clients do 
+    resources :purchases
+  end
 
-  # resource :clients, only: [:show, :update]
-  get '/clients/:id', to: "clients#show", as: "show_client"
-  patch '/clients/:id', to: "clients#update", as: "edit_client"
-  
-  # devise_for :admins, controllers: { sessions: 'admins/sessions' }
-  # devise_for :clients, controllers: { sessions: 'clients/sessions' }
+  get '/minhas_compras', to: "purchases#purchases_of_client", as: "/minhas_compras"
+
   root to: 'dashboard#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

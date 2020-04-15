@@ -11,27 +11,47 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :nome %>
-    <%= form.text_field :nome %>
-  </div>
+     <div class="col-md-8 pr-1">
+                <div class="form-group">
+                 <%= form.label :nome %>
+    <%= form.text_field :nome ,class:'form-control'%>
 
-  <div class="field">
-    <%= form.label :valor_dotz %>
-    <%= form.text_field :valor_dotz %>
-  </div>
+                </div>
+              </div>
 
-  <div class="field">
-    <%= form.label :imagem %>
-    <%= form.file_field :image %>
-  </div>
 
-  <div class="field">
-    <%= form.label :estoque %>
-    <%= form.text_field :estoque %>
-  </div>
 
-  <div class="actions">
-    <%= form.submit %>
+
+     <div class="col-md-8 pr-1">
+                <div class="form-group">
+                  <%= form.label :valor_dotz %>
+    <%= form.text_field :valor_dotz ,class:'form-control'%>
+
+                </div>
+              </div>
+
+
+  <div class="col-md-8 pr-1">
+
+                 <%= form.label :imagem %>
+    <%= form.file_field :image ,class:'form-control'%>
+
+                
+              </div>
+ <div class="col-md-8 pr-1">
+ <div class="form-group">
+                 <%= form.label :estoque %>
+                <%= form.text_field :estoque,class:'form-control' %>
+
+                </div>
+              </div>
+
+
+
+  <div class="col-md-8 pr-1">
+    <%= form.submit 'Salvar',class:'btn btn-success btn-round' %>
   </div>
 <% end %>
+
+
+

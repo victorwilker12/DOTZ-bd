@@ -1,0 +1,43 @@
+
+
+
+
+
+ 
+<div class="sidebar" data-color="white" data-active-color="danger">
+      <div class="logo">
+       
+ 
+          <% if admin_signed_in? %>
+           <a href="https://www.creative-tim.com" class="simple-text logo-mini">
+          <div class="logo-image-small">
+            <img src="/img/logo-small.png">
+          </div>
+       
+    
+    <%= link_to "Sair do Admin", destroy_client_session_path, method: :delete, data: { confirm: "Tem certeza que quer sair? "}, class:"simple-text logo-normal"%>
+<% elsif client_signed_in? %>
+  <a href="https://www.creative-tim.com" class="simple-text logo-mini">
+          <div class="logo-image-small">
+            <img src="/img/logo-small.png">
+          </div>
+    <p>Client</p>
+    <%= link_to "Sair da Dashboard", destroy_admin_session_path, method: :delete, data: { confirm: "Tem certeza que quer sair? "} , class:"simple-text logo-normal"%>
+    <%= link_to "Meu Perfil", edit_client_registration_path , class:"simple-text logo-normal"%>
+<% end %>
+      
+      </div>
+      <div class="sidebar-wrapper">
+        <ul class="nav">
+          <li>
+          
+            <%= link_to  products_path do %>
+            <i class="nc-icon nc-bank"></i>
+              <p>Loja</p>
+            <%end%>
+            
+          </li>
+          
+        </ul>
+      </div>
+    </div>

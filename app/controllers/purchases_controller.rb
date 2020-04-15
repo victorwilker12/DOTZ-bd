@@ -1,5 +1,5 @@
 class PurchasesController < ApplicationController
-  before_action :authenticate_client!, only: [:create]
+  before_action :authenticate_client!, only: [:create, :new]
   before_action :set_purchase, only: [:show, :edit, :update, :destroy]
   before_action :set_product, only: [:new, :create]
 
@@ -7,6 +7,10 @@ class PurchasesController < ApplicationController
   # GET /purchases.json
   def index
     @purchases = Purchase.all
+  end
+
+  def purchases_of_client
+    @purchases = Purchase.where(client_id: current_client)
   end
 
   # GET /purchases/1
