@@ -16,8 +16,9 @@ class Sessions::RegistrationsController < Devise::RegistrationsController
   # end
 
   # GET /resource/edit
-  # def edit
-  #   super
+  #  def edit
+  # #   super
+  
   # end
 
   # PUT /resource

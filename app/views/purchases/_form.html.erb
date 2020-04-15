@@ -41,10 +41,11 @@
 
   <div class="field">
     <%= form.label :quantidade %>
-    <%= form.number_field :quantidade,class:'form-control',min:'1' %>
+    <%= form.number_field :quantidade,class:'form-control',min:'1', id:"n1",onblur:"calcular()",required: :true%>
   </div>
 <br>
   <div class="actions">
     <%= form.submit 'Comprar',class:'btn btn-primary btn-round' %>
   </div>
 <% end %>
+
