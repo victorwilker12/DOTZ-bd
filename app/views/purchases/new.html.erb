@@ -47,8 +47,8 @@
                       <p class="card-category"><%= @product.nome %></p>
                       <br>
                       
-                      <p class="card-title"> <%= @product.valor_dotz %> dotz</p>
-                      
+                      <p class="card-category" > Valor Unitário: <div id="n2"><%= @product.valor_dotz%></div> </p>
+                 
                       
                     </div>
                   </div>
@@ -56,6 +56,9 @@
               </div>
                 <div class="card-footer ">
                 <hr>
+                     <p class="card-category" >Valor total de Dotz:</p>
+                      <div id="resultado">0</div>
+                      <hr>
                 <div class="stats">
                   
                   <%= render 'form', purchase: @purchase %>

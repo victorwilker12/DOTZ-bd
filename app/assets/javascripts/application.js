@@ -25,3 +25,21 @@
 
 
 
+// função setada para atualizar valor dotz no purchases
+window.onload = startInterval;
+function startInterval() {
+    setInterval("calcular();",100);
+}
+
+function calcular() {
+	var x=0;
+  var n1 = parseInt(document.getElementById('n1').value, 10);
+  var n2 = parseInt( $('#n2').html(), 10);
+	if (isNaN(n1)|| isNaN(n2)) {
+
+	  document.getElementById('resultado').innerHTML = x;
+	} else {
+	   document.getElementById('resultado').innerHTML = n1 * n2;
+	}
+  
+}	
