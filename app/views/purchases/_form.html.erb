@@ -28,7 +28,7 @@
         <td><%= @product.nome %></td>
         <td><%= @product.valor_dotz %></td>
         <td><%= image_tag @product.image, style:"width:50px;" if @product.image.attached? %></td>
-        <% if admin_signed_in? %>
+        <% if current_user.admin %>
           <td><%= link_to 'Visualizar', @product %></td>
           <td><%= link_to 'Editar', edit_product_path(@product) %></td>
           <td><%= link_to 'Deletar', @product, method: :delete, data: { confirm: 'Tem certeza disso?' } %></td>

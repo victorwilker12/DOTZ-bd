@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Clientes cadastrados</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Email</th>
+      <th>CPF</th>
+      <th>Saldo Dotz</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.nome %></td>
+        <td><%= user.email %></td>
+        <td><%= user.cpf %></td>
+        <td><%= user.saldo_dotz %></td>
+        <td><%= link_to 'Editar', edit_user_registration_path(user), method: :patch %></td>
+        <td><%#= link_to 'Destroy', purchase, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Voltar', products_path %> |
+<%= link_to 'Página Pricipal', root_path %>

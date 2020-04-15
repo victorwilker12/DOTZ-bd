@@ -20,14 +20,12 @@
         <td><%= product.valor_dotz %></td>
         <td><%= image_tag product.image, style:"width:50px;" if product.image.attached? %></td>
         <td><%= product.estoque %></td>
-        <% if admin_signed_in? %>
+        <% if user_signed_in? && current_user.admin %>
           <td><%= link_to 'Visualizar', product %></td>
           <td><%= link_to 'Editar', edit_product_path(product) %></td>
           <td><%= link_to 'Deletar', product, method: :delete, data: { confirm: 'Tem certeza disso?' } %></td>
         <% end %>
-        <% if client_signed_in? %>
           <td><%= link_to 'Comprar Produto', new_product_purchase_path(product) %></td>
-        <% end %>
         
       </tr>
     <% end %>
@@ -35,7 +33,7 @@
 </table>
 
 <br>
-<% if admin_signed_in? %>
+<% if user_signed_in? && current_user.admin %>
   <%= link_to 'Adicionar Produto', new_product_path %> |
 <% end %>
 <%= link_to "Página Principal", root_path %>

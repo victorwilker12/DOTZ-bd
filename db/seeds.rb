@@ -6,14 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-if !(Admin.find_by(email: "admin@example.com"))
+unless User.find_by(email: "user@example.com")
     p "Criando Admin padrão"
-    Admin.create!(email:"admin@example.com", password:"adminpassword", password_confirmation:"adminpassword")
-end
-
-unless Client.find_by(email:"client@example.com")
-    p "Criando Client padrão"
-    Client.create!(email:"client@example.com", password:"clientpassword", password_confirmation:"clientpassword")
+    User.create!(nome:"Dotezao", email:"user@example.com", cpf:"000.000.000-00", password:"userpassword", password_confirmation:"userpassword", admin: true, client: false)
 end
 
 p "Cadastrando 10 produtos..."
