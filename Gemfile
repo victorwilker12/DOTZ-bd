@@ -28,9 +28,6 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 
 gem 'devise'
-gem "therubyracer"
-gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
-gem "twitter-bootstrap-rails", "~> 4.0.0"
 gem 'faker', '~> 2.11.0'
 
 # Use ActiveStorage variant5
