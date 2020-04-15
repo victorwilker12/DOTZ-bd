@@ -1,19 +1,184 @@
-
-<% if admin_signed_in? %>
-    <h1>Dashboard Admin</h1>
-    <%= link_to "Sair do Admin", destroy_client_session_path, method: :delete, data: { confirm: "Tem certeza que quer sair? "} %>
-<% elsif client_signed_in? %>
-    <h1>Dashboard Client</h1>
-    <%= link_to "Sair da Dashboard", destroy_admin_session_path, method: :delete, data: { confirm: "Tem certeza que quer sair? "} %>|
-    <%= link_to "Meu Perfil", edit_client_registration_path %>
-<% end %>
-
-<p>Bem Vindo a Nossa Loja Dotz!!</p>
-
-<% unless admin_signed_in? || client_signed_in? %>
-    <%= link_to "Sou Admin", new_admin_session_path %> | 
-    <%= link_to "Sou Client", new_client_session_path %>
+<%= render partial: 'dashboard/nav'%>
+ <% unless admin_signed_in? || client_signed_in? %>
+    <div class="main-panel">
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
+        <div class="container-fluid">
+          <div class="navbar-wrapper">
+            <div class="navbar-toggle">
+              <button type="button" class="navbar-toggler">
+                <span class="navbar-toggler-bar bar1"></span>
+                <span class="navbar-toggler-bar bar2"></span>
+                <span class="navbar-toggler-bar bar3"></span>
+              </button>
+            </div>
+            <a class="navbar-brand" href="javascript:;">Home</a>
+          </div>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+          </button>
+        
+        </div>
+      </nav>
+      <!-- End Navbar -->
+      <div class="content">
+     
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card ">
+              <div class="card-header ">
+                <h5 class="card-title">Acessar como?</h5>
+                <p class="card-category">Selecione como deseja acessar nossa plataforma</p>
+              </div>
+              <div class="card-body ">
+               
+    <%= link_to "Sou Admin", new_admin_session_path, class:"btn btn-danger btn-round"%> 
+    <%= link_to "Sou Cliente", new_client_session_path, class:"btn btn-danger btn-round" %>
 <br><br>
-<% end %>
 
-<%= link_to "Ver produtos da Loja", products_path %>
+              </div>
+             
+            </div>
+          </div>
+        </div>
+     
+  
+      </div>
+      <%end%>
+      <% if client_signed_in?  %>
+
+<div class="main-panel">
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
+        <div class="container-fluid">
+          <div class="navbar-wrapper">
+            <div class="navbar-toggle">
+              <button type="button" class="navbar-toggler">
+                <span class="navbar-toggler-bar bar1"></span>
+                <span class="navbar-toggler-bar bar2"></span>
+                <span class="navbar-toggler-bar bar3"></span>
+              </button>
+            </div>
+            <a class="navbar-brand" href="javascript:;">Home</a>
+          </div>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+          </button>
+        
+        </div>
+      </nav>
+      <!-- End Navbar -->
+      <div class="content">
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-6">
+            <div class="card card-stats">
+              <div class="card-body ">
+                <div class="row">
+                  <div class="col-5 col-md-4">
+                    <div class="icon-big text-center icon-warning">
+                      <i class="nc-icon  nc-money-coins text-success"></i>
+                    </div>
+                  </div>
+                  <div class="col-7 col-md-8">
+                    <div class="numbers">
+                      <p class="card-category">Meu saldo de Dotz</p>
+                      
+                      <p class="card-title"><%= current_client.saldo_dotz %></p><p>
+                    </p></div>
+                  </div>
+                </div>
+              </div>
+           
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6">
+            <div class="card card-stats">
+              <div class="card-body ">
+                <div class="row">
+                  <div class="col-5 col-md-4">
+                    <div class="icon-big text-center icon-warning">
+                      <i class="nc-icon nc-money-coins text-success"></i>
+                    </div>
+                  </div>
+                  <div class="col-7 col-md-8">
+                    <div class="numbers">
+                      <p class="card-category">Total de Itens comprados</p>
+                      <p class="card-title"><%= @purchases.count %></p><p>
+                    </p></div>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        
+          
+        </div>
+        
+      </div>
+     
+        
+    </div>
+    
+          <% elsif admin_signed_in? %>
+<div class="main-panel">
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
+        <div class="container-fluid">
+          <div class="navbar-wrapper">
+            <div class="navbar-toggle">
+              <button type="button" class="navbar-toggler">
+                <span class="navbar-toggler-bar bar1"></span>
+                <span class="navbar-toggler-bar bar2"></span>
+                <span class="navbar-toggler-bar bar3"></span>
+              </button>
+            </div>
+            <a class="navbar-brand" href="javascript:;">Home</a>
+          </div>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+          </button>
+        
+        </div>
+      </nav>
+      <!-- End Navbar -->
+      <div class="content">
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-6">
+            <div class="card card-stats">
+              <div class="card-body ">
+                <div class="row">
+                  <div class="col-5 col-md-4">
+                    <div class="icon-big text-center icon-warning">
+                      <i class="nc-icon  nc-money-coins text-success"></i>
+                    </div>
+                  </div>
+                  <div class="col-7 col-md-8">
+                    <div class="numbers">
+                      <p class="card-category">Total de Produtos Cadastrados</p>
+                      
+                      <p class="card-title"><%= @products.count %></p><p>
+                    </p></div>
+                  </div>
+                </div>
+              </div>
+           
+            </div>
+          </div>
+       
+        
+          
+        </div>
+        
+      </div>
+     
+        
+    </div>
+
+    <%end%>

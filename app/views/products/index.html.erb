@@ -1,39 +1,98 @@
-<p id="notice"><%= notice %></p>
 
-<h1>Produtos da Loja DOTZ!!</h1>
+<%= render partial: 'dashboard/nav'%>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Nome</th>
-      <th>Valor dotz</th>
-      <th>Imagem</th>
-      <th>Estoque</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @products.each do |product| %>
-      <tr scope="row">
-        <td><%= product.nome %></td>
-        <td><%= product.valor_dotz %></td>
-        <td><%= image_tag product.image, style:"width:50px;" if product.image.attached? %></td>
-        <td><%= product.estoque %></td>
-        <% if admin_signed_in? %>
-          <td><%= link_to 'Visualizar', product %></td>
-          <td><%= link_to 'Editar', edit_product_path(product) %></td>
-          <td><%= link_to 'Deletar', product, method: :delete, data: { confirm: 'Tem certeza disso?' } %></td>
-        <% end %>
-        <td><%= link_to 'Comprar Produto', new_product_purchase_path(product) %></td>
-        
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-<% if admin_signed_in? %>
-  <%= link_to 'Adicionar Produto', new_product_path %> |
+<div class="main-panel">
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
+        <div class="container-fluid">
+          <div class="navbar-wrapper">
+            <div class="navbar-toggle">
+              <button type="button" class="navbar-toggler">
+                <span class="navbar-toggler-bar bar1"></span>
+                <span class="navbar-toggler-bar bar2"></span>
+                <span class="navbar-toggler-bar bar3"></span>
+              </button>
+            </div>
+            <a class="navbar-brand" href="javascript:;">Produtos da Loja DOTZ!!</a>
+            <%= link_to "Voltar Página Principal", root_path ,class:'btn btn-primary btn-round'%>
+            <% if admin_signed_in? %>
+  <%= link_to 'Adicionar Produto', new_product_path,class:'btn btn-success btn-round' %> 
 <% end %>
-<%= link_to "Página Principal", root_path %>
+          
+              
+          </div>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+          </button>
+        
+        </div>
+      </nav>
+      <!-- End Navbar -->
+      <div class="content">
+        <div class="row">
+
+         <% @products.each do |product| %>
+   <div class="col-lg-6 col-md-6 col-sm-6">
+            <div class="card card-stats">
+              <div class="card-body ">
+                <div class="row">
+                  <div class="col-5 col-md-4">
+                    <div class="icon-big text-center icon-warning">
+                    <%= image_tag product.image, style:"width:150px;" if product.image.attached? %>
+                    </div>
+                  </div>
+                    
+                  <div class="col-7 col-md-8">
+                    <div class="numbers">
+                      <p class="card-category"><%= product.nome %></p>
+                      
+                      <p class="card-title"><%= product.valor_dotz %> dotz</p><p>
+                    </p></div>
+                  </div>
+                </div>
+              </div>
+
+           <div class="card-footer ">
+                <hr>
+                <div class="stats">
+                  
+                  
+        <% if admin_signed_in? %>
+        <td>Estoque : <%= product.estoque %></td> 
+          <td>- <%= link_to 'Visualizar', product,class:'text-muted' %></td>
+          <td><%= link_to 'Editar', edit_product_path(product) %></td>
+          <td><%= link_to 'Deletar', product, method: :delete, data: { confirm: 'Tem certeza disso?' },class:'text-danger' %></td>
+        <% else %>
+        <td><%= link_to 'Comprar Produto', new_product_purchase_path(product),class:'btn btn-success btn-round' %></td>
+        <%end%>
+      </tr>
+                </div>
+              </div>
+
+            </div>
+          </div>
+     
+       
+    <% end %>
+      
+                  
+
+
+       
+
+
+
+
+
+          
+        </div>
+        
+      </div>
+     
+        
+    </div>
+   
+

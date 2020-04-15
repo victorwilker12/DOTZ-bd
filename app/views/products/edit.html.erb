@@ -1,6 +1,61 @@
-<h1>Editar Produto</h1>
+
+<%= render partial: 'dashboard/nav'%>
+
+
+<div class="main-panel">
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
+        <div class="container-fluid">
+          <div class="navbar-wrapper">
+            <div class="navbar-toggle">
+              <button type="button" class="navbar-toggler">
+                <span class="navbar-toggler-bar bar1"></span>
+                <span class="navbar-toggler-bar bar2"></span>
+                <span class="navbar-toggler-bar bar3"></span>
+              </button>
+            </div>
+            <a class="navbar-brand" href="javascript:;">Editar Produto </a>
+          
+<%= link_to 'Visualizar', @product,class:'btn btn-primary btn-round'%> |
+<%= link_to 'Voltar', products_path ,class:'btn btn-muted btn-round'%>
+
+          
+              
+          </div>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+          </button>
+        
+        </div>
+      </nav>
+
+
+  <div class="content">
+    <div class="row">
+
+      <div class="col-md-12">
+        <div class="card card-user">
+          <div class="card-header">
+            <h5 class="card-title">Editar informações</h5>
+          </div>
+          <div class="card-body">
 
 <%= render 'form', product: @product %>
 
-<%= link_to 'Show', @product %> |
-<%= link_to 'Back', products_path %>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+     
+        
+    </div>
+   
+

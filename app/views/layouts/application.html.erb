@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Dbdotz</title>
+    <title>Dbdotz - Trabalho</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
 
   </head>
 
-  <body>
+  <body class=''>
+   <div class="wrapper">
     <%= yield %>
+       <%#= render partial: "dashboard/footer" %>
+    </div>
+ 
   </body>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 </html>

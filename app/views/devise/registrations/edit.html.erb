@@ -1,62 +1,160 @@
-<%= link_to "Minhas compras", minhas_compras_path %> |
-<%= link_to "Tabela de produtos", products_path %> |
-<%= link_to "Página Principal", root_path %>
+ <div class="sidebar" data-color="white" data-active-color="danger">
 
-<hr>
-<h2>Editar <%= resource_name.to_s.humanize %></h2>
+      <div class="sidebar-wrapper">
+        <ul class="nav">
+          <li>
+            <%= link_to  root_path do %>
+              <i class="nc-icon nc-bank"></i>
+              <p>Pagina Inicial</p>
+            <%end%>
+          </li>
+          <li>
+             <%= link_to minhas_compras_path do %> 
+              <i class="nc-icon nc-diamond"></i>
+              <p>Minhas compras</p>
+              <%end%>
+            </a>
+          </li>
+        
+         
+          <li>
+             <%= link_to  products_path do %>
+              <i class="nc-icon nc-tile-56"></i>
+              <p>Tabela de produtos</p>
+              <%end%>
+            </a>
+          </li>
+       
+        </ul>
+      </div>
+    </div>
 
-<h3>Meu saldo de Dotz - <%= current_client.saldo_dotz %></h3>
-<hr>
+     
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <strong><%= f.label :email %></strong><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <strong><%= f.label :Nome %></strong><br />
-    <%= f.text_field :nome, autofocus: true, autocomplete: "Meu nome" %>
-  </div>
-
-  <div class="field">
-    <strong><%= f.label :cpf %></strong>
-    <%= f.text_field :cpf, autofocus: true, autocomplete: "000.000.000-00" %>
-  </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="field">
-    <strong><%= f.label :Senha_atual %></strong> <i>(Digite sua senha antiga para confirmar as atualizações)</i><br />
-    <%= f.password_field :current_password, autocomplete: "minha-senha-atual" %>
-  </div>
-
-  <div class="field">
-    <strong><%= f.label :Senha %></strong> <i>(Deixe em branco se não quiser mudar)</i><br />
-    <%= f.password_field :password, autocomplete: "minha-nova-senha" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> caracteres no minímo</em>
-    <% end %>
-  </div>
-
-  <div class="field">
-    <strong><%= f.label :Confirmar_senha %></strong><br />
-    <%= f.password_field :password_confirmation, autocomplete: "minha-nova-senha" %>
-  </div>
+      <div class="main-panel">
 
 
-  <div class="actions">
-    <%= f.submit "Atualizar" %>
-  </div>
-<% end %>
 
-<h3>Seção de cancelamento</h3>
+        <div class="content">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="card card-user">
+                <div class="image">
+                  <img src="/img/damir-bosnjak.jpg" alt="...">
+                </div>
+                <div class="card-body">
+                  <div class="author">
+                    <a href="#">
+                      <img class="avatar border-gray" src="/img/logo-small.png" alt="...">
+                      <h5 class="title"> <%= resource_name.to_s.humanize %></h5>
+                    </a>
+                    <%= button_to "Cancelar minha conta", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class:"btn btn-danger btn-round"%>
 
-<p><%= button_to "Cancelar minha conta", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+                  </div>
 
-<hr>
+                </div>
+                <div class="card-footer">
+                  <hr>
+                  <div class="button-container">
+                    <div class="row">
+                      <div class="col-lg-3 col-md-6 col-6 ml-auto">
+
+                      </div>
+                      <div class="col-lg-4 col-md-6 col-6 ml-auto mr-auto">
+                        <h5> <%= current_client.saldo_dotz %><br><small>Meu saldo de Dotz</small></h5>
+                      </div>
+                      <div class="col-lg-3 mr-auto">
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-8">
+              <div class="card card-user">
+                <div class="card-header">
+                  <h5 class="card-title">Editar Perfil</h5>
+                </div>
+                <div class="card-body">
+                  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+                  <%= render "devise/shared/error_messages", resource: resource %>
+
+                  <div class="row">
+
+
+
+
+                    <div class="col-md-5 pr-1">
+                      <div class="form-group">
+                        <%= f.label :email %>
+                        <%= f.email_field :email, autofocus: true, autocomplete: "email" ,class:"form-control"%>
+
+                      </div>
+                    </div>
+
+
+                    <div class="col-md-3 px-1">
+                      <div class="form-group">
+                        <strong><%= f.label :Nome %></strong><br />
+                        <%= f.text_field :nome, autofocus: true, autocomplete: "Meu nome" ,class:"form-control" %>
+                      </div>
+                    </div>
+
+                    <div class="col-md-4 pl-1">
+                      <div class="form-group">
+                        <strong><%= f.label :cpf %></strong>
+                        <%= f.text_field :cpf, autofocus: true, autocomplete: "000.000.000-00",class:"form-control" %>
+                      </div>
+                    </div>
+
+                  </div>
+
+
+
+                  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                  <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+                  <% end %>
+
+
+                  <div class="row">
+                    <div class="col-md-4 pr-1">
+                      <div class="form-group">
+                        <strong><%= f.label :Senha_atual %></strong> <i>(Digite sua senha antiga para confirmar as
+                          atualizações)</i><br />
+                        <%= f.password_field :current_password, autocomplete: "minha-senha-atual",class:"form-control" %>
+                      </div>
+                    </div>
+                    <div class="col-md-4 px-1">
+                      <div class="form-group">
+                        <strong><%= f.label :Nova_Senha %><br></strong> <i>(Deixe em branco se não quiser mudar)</i>
+                        <%= f.password_field :password, autocomplete: "minha-nova-senha",class:"form-control" %>
+                        <% if @minimum_password_length %>
+
+                        <em><%= @minimum_password_length %> caracteres no minímo</em>
+                        <% end %>
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <div class="row">
+                    <div class="update ml-auto mr-auto">
+                      <%= f.submit "Atualizar",class:"btn btn-primary btn-round" %>
+
+                    </div>
+                  </div>
+
+                  <% end %>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+      </div>
+  
