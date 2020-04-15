@@ -10,6 +10,8 @@ class ClientsController < ApplicationController
   end
 
   def edit
+ @client = Client.find(params[:id])
+      
   end
 
   # PATCH/PUT /products/1
@@ -26,9 +28,8 @@ class ClientsController < ApplicationController
   # end
 
   def update
-    p "AAAAAAAAAAAAAAAAAAAAAAAAAA#{@client.dotz.moeda}"
-    p "AAAAAAAAAAAAAAAAAAAAAAAAAAA"
     # @client.saldo_dotz += @client.dotz.moeda
+    @client = Client.find(params[:id])
     respond_to do |format|
       if @client.update(client_params)
         format.html { redirect_to clients_path, notice: 'Perfil atualizado com sucesso.' }
@@ -51,7 +52,7 @@ class ClientsController < ApplicationController
     end
     
     def client_params
-      params.permit(:nome, :email, :cpf, :saldo_dotz, dotz_attributes: [:moeda])
+      params.require(:client).permit(:nome, :email, :cpf, :saldo_dotz, dotz_attributes: [:moeda])
     end
 end
   
