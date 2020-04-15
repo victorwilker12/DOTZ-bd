@@ -51,6 +51,7 @@ test:
 #
 # You can use this database configuration with:
 #
+
   production:
     url: "mysql://b0cf5b5996afd4:00beabe1@us-cdbr-iron-east-01.cleardb.net/heroku_da6b6b212caf51e?reconnect=true"
 
@@ -58,4 +59,3 @@ test:
 #   <<: *default
 #   database: dbdotz_production
 #   username: dbdotz
-#   password: <%= ENV['DBDOTZ_DATABASE_PASSWORD'] %>
