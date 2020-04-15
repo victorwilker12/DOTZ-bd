@@ -1,7 +1,12 @@
 <h2>Editar <%= resource_name.to_s.humanize %></h2>
 
-<h3>Meu saldo de Dotz - <%= current_client.saldo_dotz %></h3>
+
 <hr>
+<% if client_signed_in? %>
+  <h3>Meu saldo de Dotz - <%= current_client.saldo_dotz %></h3>
+<% else %>
+  <% link_to "Clientes Cadastrados", clients_index_path %>
+<% end %>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
@@ -16,10 +21,12 @@
     <%= f.text_field :nome, autofocus: true, autocomplete: "Meu nome" %>
   </div>
 
-  <div class="field">
-    <strong><%= f.label :cpf %></strong>
-    <%= f.text_field :cpf, autofocus: true, autocomplete: "000.000.000-00" %>
-  </div>
+  <%  if client_signed_in? %>
+    <div class="field">
+      <strong><%= f.label :cpf %></strong>
+      <%= f.text_field :cpf, autofocus: true, autocomplete: "000.000.000-00" %>
+    </div>
+  <% end %>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
