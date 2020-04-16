@@ -30,20 +30,30 @@ class PurchasesController < ApplicationController
   # POST /purchases
   # POST /purchases.json
   def create
+    @client = current_client
     @purchase = Purchase.new(purchase_params)
-    @purchase.client_id = current_client.id
-    @purchase.product_id = @product.id
-    @purchase.valor_da_compra = @purchase.quantidade*@product.valor_dotz
-    @product.update(estoque: @product.estoque - @purchase.quantidade)
+    valor_total_da_compra = @purchase.quantidade*@product.valor_dotz
+    quantidade_de_produtos = @purchase.quantidade
+    produtos_no_estoque = @product.estoque
 
-    respond_to do |format|
-      if @purchase.save
-        format.html { redirect_to products_path, notice: 'Compra realizada com sucesso!!' }
-        format.json { render :show, status: :created, location: @purchase }
-      else
-        format.html { render :new }
-        format.json { render json: @purchase.errors, status: :unprocessable_entity }
+    if (@client.saldo_dotz >= valor_total_da_compra) && (quantidade_de_produtos <= produtos_no_estoque)
+      @purchase.client_id = @client.id
+      @purchase.product_id = @product.id
+      @purchase.valor_da_compra = valor_total_da_compra
+      @product.update(estoque: @product.estoque - @purchase.quantidade)
+      @client.update(saldo_dotz:  @client.saldo_dotz - valor_total_da_compra)
+      
+      respond_to do |format|
+        if @purchase.save
+          format.html { redirect_to products_path, notice: 'Compra realizada com sucesso!!' }
+          format.json { render :show, status: :created, location: @purchase }
+        else
+          format.html { render :new }
+          format.json { render json: @purchase.errors, status: :unprocessable_entity }
+        end
       end
+    else
+      redirect_to products_path, notice: "Saldo Insuficiente para compra"
     end
   end
 
@@ -83,6 +93,6 @@ class PurchasesController < ApplicationController
     
     # Only allow a list of trusted parameters through.
     def purchase_params
-      params.require(:purchase).permit(:valor_da_compra, :quantidade)
+      params.require(:purchase).permit(:quantidade)
     end
 end

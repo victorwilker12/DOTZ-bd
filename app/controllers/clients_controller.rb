@@ -17,12 +17,12 @@ class ClientsController < ApplicationController
   # PATCH/PUT /products/1.json
   def update
     @client = Client.find(params[:id])
-    puts a = @client.saldo_dotz
+    valor_atual = @client.saldo_dotz
     
     respond_to do |format|
      # puts  @client.saldo_dotz = @client.saldo_dotz + a
       if @client.update(client_params)
-        puts resultado= @client.saldo_dotz + a
+        resultado= valor_atual + @client.saldo_dotz
         @client.update saldo_dotz: resultado
         format.html { redirect_to clients_path, notice: 'Perfil atualizado com sucesso.' }
         # format.json { render :show, status: :ok, location: @client }
@@ -35,6 +35,7 @@ class ClientsController < ApplicationController
 
   def destroy
     @client.destroy
+    redirect_to clients_path, notice: "Cliente removido com sucesso!"
   end
 
   private
@@ -44,7 +45,7 @@ class ClientsController < ApplicationController
     end
     
     def client_params
-      params.require(:client).permit(:nome, :email, :cpf, :saldo_dotz, :valor)
+      params.require(:client).permit(:nome, :email, :cpf, :saldo_dotz)
     end
 end
   

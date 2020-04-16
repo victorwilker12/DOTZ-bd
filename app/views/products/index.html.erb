@@ -49,8 +49,15 @@
                     <div class="numbers">
                       <p class="card-category"><%= product.nome %></p>
                       
-                      <p class="card-title"><%= product.valor_dotz %> dotz</p><p>
-                    </p></div>
+                      <p class="card-title"><%= product.valor_dotz %> dotz</p>
+                      <p>
+                        <% if product.estoque > 1 %>
+                          <td>Estoque : <%= product.estoque %></td> 
+                        <% else %>
+                          <td>Esgotado!!</td>
+                        <% end %>
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -61,12 +68,12 @@
                   
                   
         <% if admin_signed_in? %>
-        <td>Estoque : <%= product.estoque %></td> 
-          <td>- <%= link_to 'Visualizar', product,class:'text-muted' %></td>
-          <td><%= link_to 'Editar', edit_product_path(product) %></td>
-          <td><%= link_to 'Deletar', product, method: :delete, data: { confirm: 'Tem certeza disso?' },class:'text-danger' %></td>
+          <strong><td>Estoque : <%= product.estoque %></td></strong>
+          <td><%= link_to 'Visualizar', product, class:'btn btn-info btn-round' %></td>
+          <td><%= link_to 'Editar', edit_product_path(product), class:'btn btn-secondary btn-round' %></td>
+          <td><%= link_to 'Deletar', product, method: :delete, data: { confirm: 'Tem certeza disso?' }, class:'btn btn-danger btn-round' %></td>
         <% else %>
-        <td><%= link_to 'Comprar Produto', new_product_purchase_path(product),class:'btn btn-success btn-round' %></td>
+          <td><%= link_to 'Comprar Produto', new_product_purchase_path(product),class:'btn btn-success btn-round' %></td>
         <%end%>
       </tr>
                 </div>

@@ -13,7 +13,7 @@ end
 
 unless Client.find_by(email:"client@example.com")
     p "Criando Client padrão"
-    Client.create!(nome:"Sou um teste", email:"client@example.com", password:"clientpassword", password_confirmation:"clientpassword")
+    Client.create!(nome:"Sou um teste", saldo_dotz: 10000, email:"client@example.com", password:"clientpassword", password_confirmation:"clientpassword")
 end
 
 password = Faker::Internet.password(min_length: 10, max_length: 20, mix_case: true)
@@ -22,6 +22,7 @@ password = Faker::Internet.password(min_length: 10, max_length: 20, mix_case: tr
         nome: Faker::Name.name,
         email: Faker::Internet.email,
         cpf: "000.000.000-00",
+        # saldo_dotz: 
         password: password,
         password_confirmation: password
     )

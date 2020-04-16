@@ -11,16 +11,10 @@ class Client < ApplicationRecord
 # validates :password, if: :password
 # validates :cpf, if: :cpf
 
-  before_save :add_moeda
-
+  validates :saldo_dotz, numericality: { greater_than_or_equal_to: 0 }
   has_many :purchases, dependent: :destroy
-  has_one :dotz, dependent: :destroy 
-  accepts_nested_attributes_for :dotz
-  
-  belongs_to :admin, optional: true
 
-  def add_moeda
-    Dotz.create(moeda: 0, client_id: self.id)
-  end
+  belongs_to :admin, optional: true
+  
   
 end
