@@ -34,7 +34,8 @@ gem 'faker', '~> 2.11.0'
 
 # Use ActiveStorage variant5
 # gem 'mini_magick', '~> 4.8'
-
+#notify
+gem 'toastr-rails'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

@@ -24,7 +24,7 @@ class ClientsController < ApplicationController
       if @client.update(client_params)
         resultado= valor_atual + @client.saldo_dotz
         @client.update saldo_dotz: resultado
-        format.html { redirect_to clients_path, notice: 'Perfil atualizado com sucesso.' }
+        format.html { redirect_to clients_path,flash: {  success:  "Perfil atualizado com sucesso" }}
         # format.json { render :show, status: :ok, location: @client }
       else
         format.html { render :edit }
@@ -35,7 +35,7 @@ class ClientsController < ApplicationController
 
   def destroy
     @client.destroy
-    redirect_to clients_path, notice: "Cliente removido com sucesso!"
+    redirect_to clients_path, flash: {  success:  "Cliente removido com sucesso" } 
   end
 
   private

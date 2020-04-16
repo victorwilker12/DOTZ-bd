@@ -20,6 +20,7 @@
 //=require dash/plugins/chartjs.min
 //=require dash/plugins/bootstrap-notify
 //=require dash/paper-dashboard.min
+//= require toastr
 //= require turbolinks
 //= require_tree .
 
