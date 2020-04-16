@@ -73,7 +73,9 @@
           <td><%= link_to 'Editar', edit_product_path(product), class:'btn btn-secondary btn-round' %></td>
           <td><%= link_to 'Deletar', product, method: :delete, data: { confirm: 'Tem certeza disso?' }, class:'btn btn-danger btn-round' %></td>
         <% else %>
+        <% if  product.estoque > 1 %>
           <td><%= link_to 'Comprar Produto', new_product_purchase_path(product),class:'btn btn-success btn-round' %></td>
+          <%end%>
         <%end%>
       </tr>
                 </div>
