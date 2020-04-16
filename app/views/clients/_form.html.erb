@@ -12,13 +12,18 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :valor %>
-    <%= form.number_field :valor %>
-  </div>
+     <div class="col-md-8 pr-1">
+                <div class="form-group">
+                <%= form.label :valor_a_ser_adicionado %>
+    <%= form.number_field :saldo_dotz,class:"form-control",required: :true %>
+  
+                </div>
+              </div>
 
-  <div class="actions">
-    <%= form.submit %>
+    
+
+ <div class="col-md-8 pr-1">
+   <%= form.submit 'Adicionar dotz',class:'btn btn-success btn-round' %>
   </div>
 
 <% end %>

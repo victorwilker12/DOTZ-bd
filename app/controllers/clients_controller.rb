@@ -17,9 +17,13 @@ class ClientsController < ApplicationController
   # PATCH/PUT /products/1.json
   def update
     @client = Client.find(params[:id])
-    @client.saldo_dotz = @client.saldo_dotz + @client.valor
+    puts a = @client.saldo_dotz
+    
     respond_to do |format|
+     # puts  @client.saldo_dotz = @client.saldo_dotz + a
       if @client.update(client_params)
+        puts resultado= @client.saldo_dotz + a
+        @client.update saldo_dotz: resultado
         format.html { redirect_to clients_path, notice: 'Perfil atualizado com sucesso.' }
         # format.json { render :show, status: :ok, location: @client }
       else

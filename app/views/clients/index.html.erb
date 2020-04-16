@@ -61,8 +61,9 @@
                   
                   
         <% if admin_signed_in? %>
+        <td><%= link_to 'Adicionar Dotz', client_edit_dotz_path(client), method: :patch ,class:'btn btn-warning btn-round'%></td>
           <td><%= link_to 'Visualizar', client_show_path(client),class:'text-muted' %></td>
-          <td><%= link_to 'Editar', client_edit_dotz_path(client), method: :patch %></td>
+          
           <td><%= link_to 'Deletar', clients_delete_path(client), method: :delete, data: { confirm: 'Tem certeza disso?' }, class:'text-danger' %></td>
         <% else %>
         <td><%#= link_to 'Comprar Produto', new_client_purchase_path(client),class:'btn btn-success btn-round' %></td>
