@@ -27,10 +27,7 @@ password = Faker::Internet.password(min_length: 10, max_length: 20, mix_case: tr
         password_confirmation: password
     )
 
-    Dotz.create!(
-        client_id: clients + 1,
-        moeda: 0
-    )
+  
 end
 
 
