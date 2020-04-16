@@ -14,12 +14,19 @@
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
+            <div class="col-md-10">
             <a class="navbar-brand" href="javascript:;">Produtos da Loja DOTZ!!</a>
             <%= link_to "Voltar Página Principal", root_path ,class:'btn btn-primary btn-round'%>
             <% if admin_signed_in? %>
   <%= link_to 'Adicionar Produto', new_product_path,class:'btn btn-success btn-round' %> 
-<% end %>
-          
+<% end %>  
+</div>
+
+<div class="col-md-6 pr-1">
+                <div class="form-group">
+          <input type="text" id="myInput" onkeyup="searchJScode()" placeholder="Busque aqui seu produto.." class='form-control'>
+        </div>
+        </div>
               
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,7 +39,7 @@
       </nav>
       <!-- End Navbar -->
       <div class="content">
-        <div class="row">
+        <div id='myTable' class="row">
 
          <% @products.each do |product| %>
    <div class="col-lg-6 col-md-6 col-sm-6">
