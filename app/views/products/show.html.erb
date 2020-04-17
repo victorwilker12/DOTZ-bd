@@ -39,7 +39,10 @@
             <div class="col-md-12">
               <div class="card card-user">
                 <div class="image text-center">
+                   <% if @product.imagem.attached? %>
+ 
                   <%= image_tag(rails_blob_path(@product.imagem, disposition: "attachment",style:"width:250px;"))  %>
+    <% end %>
 
                 </div>
                 
