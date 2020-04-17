@@ -27,7 +27,7 @@
       <tr scope="row">
         <td><%= @product.nome %></td>
         <td><%= @product.valor_dotz %></td>
-        <td><%= image_tag @product.image, style:"width:50px;" if @product.image.attached? %></td>
+        <td><%= image_tag @product.imagem, style:"width:50px;" if @product.imagem.attached? %></td>
         <% if admin_signed_in? %>
           <td><%= link_to 'Visualizar', @product %></td>
           <td><%= link_to 'Editar', edit_product_path(@product) %></td>

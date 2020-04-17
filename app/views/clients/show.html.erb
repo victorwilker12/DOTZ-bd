@@ -16,8 +16,8 @@
             </div>
             <a class="navbar-brand" href="javascript:;">Visualizar Produto </a>
           
-<%= link_to 'Editar', edit_product_path(@product) ,class:'btn btn-primary btn-round'%> |
-<%= link_to 'Voltar', products_path ,class:'btn btn-muted btn-round'%>
+
+<%= link_to 'Voltar',clients_path  ,class:'btn btn-muted btn-round'%>
 
           
               
@@ -38,16 +38,10 @@
           <div class="row">
             <div class="col-md-12">
               <div class="card card-user">
-                <div class="image text-center">
-                   <% if @product.imagem.attached? %>
- 
-                  <%= image_tag(rails_blob_path(@product.imagem, disposition: "attachment",style:"width:250px;"))  %>
-    <% end %>
-
-                </div>
+                
                 
                 <div class="card-footer">
-                  <hr>
+       
                   <div class="button-container">
                     <div class="row">
                       <div class="col-lg-3 col-md-6 col-6 ml-auto">
@@ -57,27 +51,22 @@
 
 <p id="notice"><%= notice %></p>
 
-                       
+         <hr>               
 <p>
   <strong>Nome:</strong>
-  <%= @product.nome %>
+  <%= @client.nome %>
 </p>
 
 <p>
-  <strong>Valor dotz:</strong>
-  <%= @product.valor_dotz %>
+  <strong>Email:</strong>
+  <%= @client.email %>
 </p>
 
 <p>
-  <strong>Imagem:</strong>
-  
+  <strong>Saldo dotz:</strong>
+  <%= @client.saldo_dotz %>
 </p>
-
-<p>
-  <strong>Estoque:</strong>
-  <%= @product.estoque %>
-</p>
-
+ <hr>
                       </div>
                       <div class="col-lg-3 mr-auto">
 

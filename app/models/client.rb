@@ -11,7 +11,10 @@ class Client < ApplicationRecord
 # validates :password, if: :password
 # validates :cpf, if: :cpf
 
+  validates :saldo_dotz, numericality: { greater_than_or_equal_to: 0 }
+  has_many :purchases, dependent: :destroy
 
-  has_many :purchases
   belongs_to :admin, optional: true
+  
+  
 end

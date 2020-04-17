@@ -1,0 +1,24 @@
+<% unless flash.empty? %>
+
+  <script type="text/javascript">
+    <% flash.each do |f| %>
+      <% type = f[0].to_s %>
+      $(function() {
+      toastr['<%= type %>']('<%= f[1] %>');
+        });
+    <% end %>
+  </script>
+<% end %>
+
+<% unless notice.nil? %>
+ 
+  <script type="text/javascript">
+  
+
+      $(function() {
+      toastr['success']('<%= notice %>');
+      });
+
+  </script>
+
+<% end %>

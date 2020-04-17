@@ -34,7 +34,7 @@
   <div class="col-md-8 pr-1">
 
                  <%= form.label :imagem %>
-    <%= form.file_field :image ,class:'form-control'%>
+    <%= form.file_field :imagem,data: { max_file_size: 10.megabytes }  ,class:'form-control'%>
 
                 
               </div>

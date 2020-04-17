@@ -14,19 +14,12 @@
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <div class="col-md-10">
-            <a class="navbar-brand" href="javascript:;">Produtos da Loja DOTZ!!</a>
+            <a class="navbar-brand" href="javascript:;">Clientes Cadastrados</a>
             <%= link_to "Voltar Página Principal", root_path ,class:'btn btn-primary btn-round'%>
             <% if admin_signed_in? %>
-  <%= link_to 'Adicionar Produto', new_product_path,class:'btn btn-success btn-round' %> 
-<% end %>  
-</div>
-
-<div class="col-md-6 pr-1">
-                <div class="form-group">
-          <input type="text" id="myInput" onkeyup="searchJScode()" placeholder="Busque aqui seu produto.." class='form-control'>
-        </div>
-        </div>
+  <%#= link_to 'Adicionar Produto', new_client_path,class:'btn btn-success btn-round' %> 
+<% end %>
+          
               
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,37 +32,25 @@
       </nav>
       <!-- End Navbar -->
       <div class="content">
-        <div id='myTable' class="row">
+        <div class="row">
 
-         <% @products.each do |product| %>
+         <% @clients.each do |client| %>
    <div class="col-lg-6 col-md-6 col-sm-6">
             <div class="card card-stats">
               <div class="card-body ">
                 <div class="row">
                   <div class="col-5 col-md-4">
                     <div class="icon-big text-center icon-warning">
-                      <% if product.imagem.attached? %>
-                        <%= image_tag(rails_blob_path(product.imagem, disposition: "attachment"), style:"width:150px;") %>
-                      <% else %>
-                        <img src="/images/default_image.png", style="width:150px;">
-                      <% end %>
-
+                    <%#= image_tag client.image, style:"width:150px;" if client.image.attached? %>
                     </div>
                   </div>
                     
                   <div class="col-7 col-md-8">
                     <div class="numbers">
-                      <p class="card-category"><%= product.nome %></p>
+                      <p class="card-category"><%= client.nome %></p>
                       
-                      <p class="card-title"><%= product.valor_dotz %> dotz</p>
-                      <p>
-                        <% if product.estoque >= 1 %>
-                          <td>Estoque : <%= product.estoque %></td> 
-                        <% else %>
-                          <td>Esgotado!!</td>
-                        <% end %>
-                      </p>
-                    </div>
+                      <p class="card-title"><%= client.saldo_dotz %> dotz</p><p>
+                    </p></div>
                   </div>
                 </div>
               </div>
@@ -80,13 +61,12 @@
                   
                   
         <% if admin_signed_in? %>
-          <td><%= link_to 'Visualizar', product, class:'btn btn-info btn-round' %></td>
-          <td><%= link_to 'Editar', edit_product_path(product), class:'btn btn-secondary btn-round' %></td>
-          <td><%= link_to 'Deletar', product, method: :delete, data: { confirm: 'Tem certeza disso?' }, class:'btn btn-danger btn-round' %></td>
+        <td><%= link_to 'Adicionar Dotz', client_edit_dotz_path(client), method: :patch ,class:'btn btn-warning btn-round'%></td>
+          <td><%= link_to 'Visualizar', client_show_path(client), class:'btn btn-info btn-round' %></td>
+          
+          <td><%= link_to 'Deletar', clients_delete_path(client), method: :delete, data: { confirm: 'Tem certeza disso?' }, class:'btn btn-danger btn-round' %></td>
         <% else %>
-        <% if  product.estoque >= 1 %>
-          <td><%= link_to 'Comprar Produto', new_product_purchase_path(product),class:'btn btn-success btn-round' %></td>
-          <%end%>
+        <td><%#= link_to 'Comprar Produto', new_client_purchase_path(client),class:'btn btn-success btn-round' %></td>
         <%end%>
       </tr>
                 </div>
