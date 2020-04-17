@@ -48,8 +48,12 @@
                 <div class="row">
                   <div class="col-5 col-md-4">
                     <div class="icon-big text-center icon-warning">
-                      <%= image_tag(rails_blob_path(product.imagem, disposition: "attachment"), style:"width:150px;") if product.imagem.attached? %>
-                  
+                      <% if product.imagem.attached? %>
+                        <%= image_tag(rails_blob_path(product.imagem, disposition: "attachment"), style:"width:150px;") if product.imagem.attached? %>
+                      <% else %>
+                        <img src="/images/default_image.png", style="width:150px;">
+                      <% end %>
+
                     </div>
                   </div>
                     
@@ -76,7 +80,6 @@
                   
                   
         <% if admin_signed_in? %>
-          <strong><td>Estoque : <%= product.estoque %></td></strong>
           <td><%= link_to 'Visualizar', product, class:'btn btn-info btn-round' %></td>
           <td><%= link_to 'Editar', edit_product_path(product), class:'btn btn-secondary btn-round' %></td>
           <td><%= link_to 'Deletar', product, method: :delete, data: { confirm: 'Tem certeza disso?' }, class:'btn btn-danger btn-round' %></td>
