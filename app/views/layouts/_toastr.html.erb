@@ -11,12 +11,14 @@
 <% end %>
 
 <% unless notice.nil? %>
-
-  <script type="text/javascript">
-    
-      $(function() {
-      toastr['error']('<%= notice %>');
-        });
  
+  <script type="text/javascript">
+  
+
+      $(function() {
+      toastr['success']('<%= notice %>');
+      });
+
   </script>
+
 <% end %>
