@@ -39,8 +39,8 @@
             <div class="col-md-12">
               <div class="card card-user">
                 <div class="image text-center">
-                  <%= image_tag  image_tag(rails_blob_path(product.imagem, disposition: "attachment"),style:"width:250px;"if @product.imagem.attached?)  %>
-                 
+                  <%= image_tag(rails_blob_path(product.imagem, disposition: "attachment"),style:"width:250px;"if product.imagem.attached?)  %>
+
                 </div>
                 
                 <div class="card-footer">
