@@ -37,6 +37,9 @@ gem 'faker', '~> 2.11.0'
 gem 'toastr-rails'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'cloudinary'
+
+gem 'activestorage-cloudinary-service'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false

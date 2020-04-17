@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: daxanzom4
+  api_key: '325314554245567'
+  api_secret: 6dTPDotSo-dyTSUoJx1Q7hLB3ag
+  enhance_image_tag: true
+  static_file_support: false
+production:
+  cloud_name: daxanzom4
+  api_key: '325314554245567'
+  api_secret: 6dTPDotSo-dyTSUoJx1Q7hLB3ag
+  enhance_image_tag: true
+  static_file_support: true
+test:
+  cloud_name: daxanzom4
+  api_key: '325314554245567'
+  api_secret: 6dTPDotSo-dyTSUoJx1Q7hLB3ag
+  enhance_image_tag: true
+  static_file_support: false
